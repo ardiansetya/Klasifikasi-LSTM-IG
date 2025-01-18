@@ -22,10 +22,10 @@ Proyek ini menggunakan Long Short-Term Memory (LSTM) untuk mengklasifikasikan em
 ### 3. **Pembangunan Model**  
    - Arsitektur LSTM digunakan untuk memproses urutan teks.  
    - Layer embedding ditambahkan untuk representasi teks.  
-   - Aktivasi softmax pada output layer untuk klasifikasi multi-kelas.  
+   - Aktivasi sigmoid pada output layer untuk klasifikasi biner.  
 
 ### 4. **Pelatihan Model**  
-   - Model dilatih menggunakan optimizer `adam` dan fungsi loss `categorical_crossentropy`.  
+   - Model dilatih menggunakan optimizer `adam` dan fungsi loss `binary_crossentropy`.  
    - Data dibagi menjadi training, validation, dan testing set.  
 
 ### 5. **Evaluasi**  
@@ -47,24 +47,31 @@ Proyek ini menggunakan Long Short-Term Memory (LSTM) untuk mengklasifikasikan em
 ---
 
 ## 📊 Hasil  
-- **Akurasi Pelatihan:** 95%  
-- **Akurasi Validasi:** 90%  
+- **Akurasi Pelatihan:** 85%  
+- **Akurasi Validasi:** 83%  
 - **Confusion Matrix:**  
-  | Sentimen | Positif | Netral | Negatif |  
-  |----------|---------|--------|---------|  
-  | **Positif** | 120     | 10     | 5       |  
-  | **Netral**  | 8       | 150    | 12      |  
-  | **Negatif** | 6       | 9      | 100     |  
+  ```
+  [[34 10]
+   [ 2 34]]
+  ```
+- **Classification Report:**  
+  ```
+                precision    recall  f1-score   support
 
-- **Visualisasi Loss dan Akurasi:**  
-  ![Training Plot](#)
+      negative       0.94      0.77      0.85        44
+      positive       0.77      0.94      0.85        36
+
+      accuracy                           0.85        80
+     macro avg       0.86      0.86      0.85        80
+  weighted avg       0.87      0.85      0.85        80
+  ```
 
 ---
 
 ## 🧪 Evaluasi Model  
 - **Kekuatan:**  
   - Mampu menangkap konteks panjang dari teks komentar.  
-  - Akurasi tinggi pada komentar netral dan positif.  
+  - Akurasi tinggi pada komentar positif.  
 
 - **Kelemahan:**  
   - Performa pada kelas negatif sedikit lebih rendah.  
@@ -76,8 +83,3 @@ Proyek ini menggunakan Long Short-Term Memory (LSTM) untuk mengklasifikasikan em
 
 ---
 
-## 🚀 Cara Menjalankan  
-1. Clone repository ini:  
-   ```bash
-   git clone https://github.com/username/reponame.git
-   cd reponame
